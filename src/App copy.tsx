@@ -96,12 +96,6 @@ function App() {
   const totalReviewPages = Math.ceil(googleReviews.length / reviewsPerPage);
   const selectedVideo = activeVideo ? videos.find((video) => video.embedId === activeVideo) : null;
 
-  const scrollVideoRow = (direction: 'left' | 'right') => {
-    if (!videoScrollRef.current) return;
-    const scrollAmount = videoScrollRef.current.clientWidth * 0.9;
-    videoScrollRef.current.scrollBy({ left: direction === 'right' ? scrollAmount : -scrollAmount, behavior: 'smooth' });
-  };
-
   const copyPhone = (phone: string) => {
     navigator.clipboard.writeText(phone);
     setCopiedPhone(phone);
