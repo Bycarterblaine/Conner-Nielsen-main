@@ -83,17 +83,6 @@ const videos = [
   { id: 16, title: 'Layne M. - Highly recommended realtor', embedId: 'OSU9Kv_Y5Y8', thumbnail: 'https://img.youtube.com/vi/OSU9Kv_Y5Y8/hqdefault.jpg', duration: '4:20' },
 ];
 
-// DFW Areas
-const dfwAreas = [
-  'Dallas', 'Fort Worth', 'Arlington', 'Plano', 'Frisco', 'Irving', 'Garland', 
-  'Grand Prairie', 'McKinney', 'Mesquite', 'Carrollton', 'Denton', 'Richardson', 
-  'Lewisville', 'Allen', 'Flower Mound', 'North Richland Hills', 'Mansfield',
-  'Rowlett', 'Euless', 'DeSoto', 'Grapevine', 'Bedford', 'Cedar Hill', 'Wylie',
-  'Haltom City', 'Coppell', 'Lancaster', 'The Colony', 'Southlake', 'Keller',
-  'Hurst', 'Burleson', 'Little Elm', 'Rockwall', 'Sachse', 'Watauga', 'Corsicana',
-  'Ellis County', 'Collin County', 'Denton County', 'Tarrant County', 'Dallas County'
-];
-
 function App() {
   const [showBooking, setShowBooking] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState<string | null>(null);
