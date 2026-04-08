@@ -91,7 +91,6 @@ function App() {
   const [reviewPage, setReviewPage] = useState(0);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const videoScrollRef = useRef<HTMLDivElement | null>(null);
   const reviewsPerPage = 3;
   const totalReviewPages = Math.ceil(googleReviews.length / reviewsPerPage);
   const selectedVideo = activeVideo ? videos.find((video) => video.embedId === activeVideo) : null;
