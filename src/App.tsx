@@ -7,6 +7,9 @@ import { Routes, Route } from "react-router-dom";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 
+
+
+
 // ─── Icons ───────────────────────────────────────────────────────────────────
 
 const RealtorIcon = () => (
@@ -408,30 +411,19 @@ function App() {
         </div>
       </section>
 
-      {/* ── Blogs ── */}
-      <section id="blogs" className="py-24 md:py-32 px-6 bg-white scroll-mt-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold mb-4">Learn more</h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {blogs.map((post) => (
-              <a
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="bg-gray-50 rounded-xl p-6 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 border border-[#A10D02]/30 hover:border-[#A10D02]"
-              >
-                <div className="mb-3">
-                  <p className="font-semibold text-lg text-gray-900">{post.title}</p>
-                </div>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">{post.excerpt}</p>
-                <span className="text-[#A10D02] text-sm font-semibold">Read More →</span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      {blogs.map((post) => (
+  <Link
+    key={post.slug}
+    to={`/blog/${post.slug}`}
+    className="bg-gray-50 rounded-xl p-6 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 border border-[#A10D02]/30 hover:border-[#A10D02]"
+  >
+    <div className="mb-3">
+      <p className="font-semibold text-lg text-gray-900">{post.title}</p>
+    </div>
+    <p className="text-gray-600 text-sm leading-relaxed mb-4">{post.excerpt}</p>
+    <span className="text-[#A10D02] text-sm font-semibold">Read More →</span>
+  </Link>
+))}
 
       {/* ── Final CTA ── */}
       <section className="py-24 md:py-32 px-6 bg-white">
