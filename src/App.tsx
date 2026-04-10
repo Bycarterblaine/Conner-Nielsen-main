@@ -108,9 +108,9 @@ const BOOK_URL = 'https://myworkspacebfb9d.myclickfunnels.com/schedule/ic-with-c
 // ─── Component ────────────────────────────────────────────────────────────────
 
 function App() {
-  const [dialingPhone, setDialingPhone]   = useState<string | null>(null);
-  const [activeVideo, setActiveVideo]     = useState<string | null>(null);
-  const [videoLoaded, setVideoLoaded]     = useState(false);
+  const [dialingPhone, setDialingPhone]     = useState<string | null>(null);
+  const [activeVideo, setActiveVideo]       = useState<string | null>(null);
+  const [videoLoaded, setVideoLoaded]       = useState(false);
   const [reviewsVisible, setReviewsVisible] = useState(false);
   const [storiesVisible, setStoriesVisible] = useState(false);
 
@@ -118,7 +118,7 @@ function App() {
   const reviewsRef     = useRef<HTMLDivElement>(null);
   const moreStoriesRef = useRef<HTMLDivElement>(null);
 
-  const selectedVideo = activeVideo ? videos.find((v) => v.embedId === activeVideo) : null;
+  const selectedVideo  = activeVideo ? videos.find((v) => v.embedId === activeVideo) : null;
   const featuredVideos = videos.filter((v) => v.featured && v.id !== 1);
   const marqueeVideos  = videos.filter((v) => !v.featured);
 
@@ -241,7 +241,7 @@ function App() {
             ))}
           </div>
 
-          {/* Metrics — 3-col on all screen sizes */}
+          {/* Metrics */}
           <div className="grid grid-cols-3 gap-4 max-w-sm mx-auto mb-12 text-center">
             <div>
               <p className="text-3xl font-bold text-[#8D0B01]">$250M+</p>
@@ -405,38 +405,30 @@ function App() {
         </div>
       </section>
 
-     {/* ── Blogs ── */}
-<section id="blogs" className="py-24 md:py-32 px-6 bg-white scroll-mt-20">
-  <div className="max-w-6xl mx-auto">
-    <div className="text-center mb-14">
-      <h2 className="text-3xl font-bold mb-4">Learn more</h2>
-    </div>
-
-    <div className="grid md:grid-cols-3 gap-8">
-      {blogs.map((post) => (
-        
-          key={post.slug}
-          href={`/blog/${post.slug}`}
-          className="bg-gray-50 rounded-xl p-6 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 border border-[#A10D02]/30 hover:border-[#A10D02]"
-        >
-          <div className="mb-3">
-            <p className="font-semibold text-lg text-gray-900">
-              {post.title}
-            </p>
+      {/* ── Blogs ── */}
+      <section id="blogs" className="py-24 md:py-32 px-6 bg-white scroll-mt-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl font-bold mb-4">Learn more</h2>
           </div>
 
-          <p className="text-gray-600 text-sm leading-relaxed mb-4">
-            {post.excerpt}
-          </p>
-
-          <span className="text-[#A10D02] text-sm font-semibold">
-            Read More →
-          </span>
-        </a>
-      ))}
-    </div>
-  </div>
-</section>
+          <div className="grid md:grid-cols-3 gap-8">
+            {blogs.map((post) => (
+              <a
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="bg-gray-50 rounded-xl p-6 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 border border-[#A10D02]/30 hover:border-[#A10D02]"
+              >
+                <div className="mb-3">
+                  <p className="font-semibold text-lg text-gray-900">{post.title}</p>
+                </div>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">{post.excerpt}</p>
+                <span className="text-[#A10D02] text-sm font-semibold">Read More →</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── Final CTA ── */}
       <section className="py-24 md:py-32 px-6 bg-white">
