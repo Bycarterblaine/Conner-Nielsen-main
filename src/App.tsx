@@ -3,6 +3,7 @@ import { Phone, PhoneOutgoing } from 'lucide-react';
 import { Calendar, Star, Play, X, Quote, Facebook, Instagram } from 'lucide-react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { blogs } from '@/data/blogs';
+import { useParams } from 'react-router-dom';
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
 
