@@ -406,22 +406,18 @@ function App() {
       </section>
 
      {/* ── Blogs ── */}
-<div id="Blogs" className="pt-10 scroll-mt-20"> 
-  <section className="py-24 md:py-32 px-6 bg-white">
-    <div className="max-w-6xl mx-auto">
-      <div className="text-center mb-14">
-        <h2 className="text-3xl font-bold mb-4">Learn more</h2> 
-      </div>
+<section id="blogs" className="py-24 md:py-32 px-6 bg-white scroll-mt-20">
+  <div className="max-w-6xl mx-auto">
+    <div className="text-center mb-14">
+      <h2 className="text-3xl font-bold mb-4">Learn more</h2>
     </div>
-  </section>
-</div>
 
     <div className="grid md:grid-cols-3 gap-8">
       {blogs.map((post) => (
-        <a
+        
           key={post.slug}
           href={`/blog/${post.slug}`}
-          className="bg-gray-50 rounded-xl p-6 transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
+          className="bg-gray-50 rounded-xl p-6 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 border border-[#A10D02]/30 hover:border-[#A10D02]"
         >
           <div className="mb-3">
             <p className="font-semibold text-lg text-gray-900">
@@ -439,10 +435,8 @@ function App() {
         </a>
       ))}
     </div>
-
   </div>
 </section>
-
 
       {/* ── Final CTA ── */}
       <section className="py-24 md:py-32 px-6 bg-white">
