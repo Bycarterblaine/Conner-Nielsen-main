@@ -158,6 +158,7 @@ function App() {
 
           <div className="hidden md:flex items-center justify-center gap-8 text-sm flex-1">
             <button onClick={() => scrollToSection('videos')}  className="text-gray-600 hover:text-gray-900 transition-colors">Videos</button>
+            <button onClick={() => scrollToSection('proof')}   className="text-gray-600 hover:text-gray-900 transition-colors">Blogs</button>
             <button onClick={() => scrollToSection('reviews')} className="text-gray-600 hover:text-gray-900 transition-colors">Reviews</button>
             <button onClick={() => scrollToSection('proof')}   className="text-gray-600 hover:text-gray-900 transition-colors">Proof</button>
           </div>
@@ -409,7 +410,7 @@ function App() {
   <div className="max-w-6xl mx-auto">
 
     <div className="text-center mb-14">
-      <h2 className="text-3xl font-bold mb-4">Placeholder Title</h2>
+      <h2 className="text-3xl font-bold mb-4">Learn more</h2>
     </div>
 
     <div className="grid md:grid-cols-3 gap-8">
