@@ -1,9 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Phone, PhoneOutgoing } from 'lucide-react';
 import { Calendar, Star, Play, X, Quote, Facebook, Instagram } from 'lucide-react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { blogs } from '@/data/blogs';
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
 
@@ -109,9 +107,9 @@ const BOOK_URL = 'https://myworkspacebfb9d.myclickfunnels.com/schedule/ic-with-c
 // ─── Component ────────────────────────────────────────────────────────────────
 
 function App() {
-  const [dialingPhone, setDialingPhone]     = useState<string | null>(null);
-  const [activeVideo, setActiveVideo]       = useState<string | null>(null);
-  const [videoLoaded, setVideoLoaded]       = useState(false);
+  const [dialingPhone, setDialingPhone]   = useState<string | null>(null);
+  const [activeVideo, setActiveVideo]     = useState<string | null>(null);
+  const [videoLoaded, setVideoLoaded]     = useState(false);
   const [reviewsVisible, setReviewsVisible] = useState(false);
   const [storiesVisible, setStoriesVisible] = useState(false);
 
@@ -119,10 +117,11 @@ function App() {
   const reviewsRef     = useRef<HTMLDivElement>(null);
   const moreStoriesRef = useRef<HTMLDivElement>(null);
 
-  const selectedVideo  = activeVideo ? videos.find((v) => v.embedId === activeVideo) : null;
+  const selectedVideo = activeVideo ? videos.find((v) => v.embedId === activeVideo) : null;
   const featuredVideos = videos.filter((v) => v.featured && v.id !== 1);
   const marqueeVideos  = videos.filter((v) => !v.featured);
 
+  // Scroll-triggered animations
   useEffect(() => {
     const opts = { root: null, rootMargin: '0px', threshold: 0.1 };
 
@@ -144,6 +143,8 @@ function App() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // ─── Render ───────────────────────────────────────────────────────────────
+
   return (
     <div className="min-h-screen bg-white text-gray-900">
 
@@ -156,7 +157,6 @@ function App() {
 
           <div className="hidden md:flex items-center justify-center gap-8 text-sm flex-1">
             <button onClick={() => scrollToSection('videos')}  className="text-gray-600 hover:text-gray-900 transition-colors">Videos</button>
-            <button onClick={() => scrollToSection('blogs')}   className="text-gray-600 hover:text-gray-900 transition-colors">Blogs</button>
             <button onClick={() => scrollToSection('reviews')} className="text-gray-600 hover:text-gray-900 transition-colors">Reviews</button>
             <button onClick={() => scrollToSection('proof')}   className="text-gray-600 hover:text-gray-900 transition-colors">Proof</button>
           </div>
@@ -239,7 +239,7 @@ function App() {
             ))}
           </div>
 
-          {/* Metrics */}
+          {/* Metrics — 3-col on all screen sizes */}
           <div className="grid grid-cols-3 gap-4 max-w-sm mx-auto mb-12 text-center">
             <div>
               <p className="text-3xl font-bold text-[#8D0B01]">$250M+</p>
@@ -316,31 +316,6 @@ function App() {
         </div>
       </section>
 
-      {/* ── Blog ── */}
-      <section id="blogs" className="py-24 md:py-32 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold">From the Blog</h2>
-            <p className="text-gray-600 mt-2 text-sm">Tips, market updates, and guides for Texas buyers and sellers.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {blogs.map((post) => (
-              <Link
-                key={post.slug}
-                to={`/blog/${post.slug}`}
-                className="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-[#A10D02]/20 hover:border-[#A10D02] block"
-              >
-                <p className="font-semibold text-lg text-gray-900 mb-2">{post.title}</p>
-                <p className="text-gray-500 text-xs mb-4">{post.date} · {post.readTime}</p>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">{post.excerpt}</p>
-                <span className="text-[#A10D02] text-sm font-semibold">Read More →</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── Reviews ── */}
       <section id="reviews" className="py-24 md:py-32 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
@@ -355,6 +330,7 @@ function App() {
             </div>
           </div>
 
+          {/* Google review cards */}
           <div ref={reviewsRef} className="grid md:grid-cols-3 gap-8 mb-12">
             {googleReviews.map((review, index) => (
               <div
@@ -374,6 +350,7 @@ function App() {
             ))}
           </div>
 
+          {/* Mini testimonial cards */}
           <div ref={moreStoriesRef} className="max-w-6xl mx-auto mb-10">
             <p className="text-sm text-gray-700 mb-4 text-center uppercase tracking-widest">Even more reviews</p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
