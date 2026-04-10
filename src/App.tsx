@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Phone, PhoneOutgoing } from 'lucide-react';
 import { Calendar, Star, Play, X, Quote, Facebook, Instagram } from 'lucide-react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { blogs } from '@/data/blogs';
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
 
@@ -402,6 +403,43 @@ function App() {
 
         </div>
       </section>
+
+      {/* ── Blog Section ── */}
+<section className="py-24 md:py-32 px-6 bg-white">
+  <div className="max-w-6xl mx-auto">
+
+    {/* Heading */}
+    <div className="text-center mb-14">
+      <h2 className="text-3xl font-bold mb-4">Placeholder Title</h2>
+    </div>
+
+    {/* Blog Cards */}
+    <div className="grid md:grid-cols-3 gap-8">
+      {blogs.map((post, index) => (
+        <a
+          key={post.slug}
+          href={`/blog/${post.slug}`} // ← THIS should match your .pages.yml routing
+          className="bg-gray-50 rounded-xl p-6 transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
+        >
+          <div className="mb-3">
+            <p className="font-semibold text-lg text-gray-900">
+              {post.title}
+            </p>
+          </div>
+
+          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+            {post.excerpt}
+          </p>
+
+          <span className="text-[#A10D02] text-sm font-semibold">
+            Read More →
+          </span>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>
 
       {/* ── Final CTA ── */}
       <section className="py-24 md:py-32 px-6 bg-white">
