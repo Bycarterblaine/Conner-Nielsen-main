@@ -405,14 +405,16 @@ function App() {
         </div>
       </section>
 
-      {/* ── Blogs ── */}
-<div id="Blogs" className="pt-10">
-<section className="py-24 md:py-32 px-6 bg-white">
-  <div className="max-w-6xl mx-auto">
-
-    <div className="text-center mb-14">
-    <h2 className="text-3xl font-bold mb-4">Learn more</h2> </div>
+     {/* ── Blogs ── */}
+<div id="Blogs" className="pt-10 scroll-mt-20"> 
+  <section className="py-24 md:py-32 px-6 bg-white">
+    <div className="max-w-6xl mx-auto">
+      <div className="text-center mb-14">
+        <h2 className="text-3xl font-bold mb-4">Learn more</h2> 
+      </div>
     </div>
+  </section>
+</div>
 
     <div className="grid md:grid-cols-3 gap-8">
       {blogs.map((post) => (
