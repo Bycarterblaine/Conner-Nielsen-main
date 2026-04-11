@@ -3,6 +3,8 @@ import { Phone, PhoneOutgoing } from 'lucide-react';
 import { Calendar, Star, Play, X, Quote, Facebook, Instagram } from 'lucide-react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { blogs } from '@/data/blogs';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import BlogPost from '@/components/BlogPost'; // adjust path if needed
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
 
