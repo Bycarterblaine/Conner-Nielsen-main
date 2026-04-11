@@ -1,5 +1,6 @@
+import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { Calendar, Star, Facebook, Instagram } from "lucide-react";
+import { Calendar, Facebook, Instagram } from "lucide-react";
 import { blogs } from "@/data/blogs";
 
 const BOOK_URL = "https://myworkspacebfb9d.myclickfunnels.com/schedule/ic-with-conner";
@@ -16,7 +17,7 @@ const RealtorIcon = () => (
 
 function renderContent(content: string) {
   const lines = content.split('\n');
-  const elements: JSX.Element[] = [];
+  const elements: React.ReactElement[] = [];
   lines.forEach((line, i) => {
     if (line.startsWith('**') && line.endsWith('**')) {
       elements.push(<h3 key={i} className="text-xl font-bold mt-8 mb-2">{line.replace(/\*\*/g, '')}</h3>);
