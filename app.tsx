@@ -109,7 +109,7 @@ const BOOK_URL = 'https://myworkspacebfb9d.myclickfunnels.com/schedule/ic-with-c
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-function App() {
+function HomePage() {
   const [dialingPhone, setDialingPhone]   = useState<string | null>(null);
   const [activeVideo, setActiveVideo]     = useState<string | null>(null);
   const [videoLoaded, setVideoLoaded]     = useState(false);
@@ -577,6 +577,17 @@ function App() {
       </Dialog>
 
     </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/*" element={<HomePage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
