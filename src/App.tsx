@@ -332,6 +332,7 @@ function App() {
       </section>
 
       {/* ── Blog ── */}
+      <div id="blogs" className="scroll-mt-32" />
       <section className="py-24 md:py-32 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
