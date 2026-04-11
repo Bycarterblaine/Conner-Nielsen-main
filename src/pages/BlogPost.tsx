@@ -4,6 +4,16 @@ import { blogs } from "@/data/blogs";
 
 const BOOK_URL = "https://myworkspacebfb9d.myclickfunnels.com/schedule/ic-with-conner";
 
+function renderContent(content: string) {
+  return content.split('\n').map((line, i) => {
+    if (line.startsWith('**') && line.endsWith('**')) {
+      return <h3 key={i} className="text-xl font-bold mt-8 mb-2">{line.replace(/\*\*/g, '')}</h3>;
+    }
+    if (line.trim() === '') return null;
+    return <p key={i} className="text-gray-800 leading-relaxed">{line}</p>;
+  });
+}
+
 function BlogPost() {
   const { slug } = useParams();
   const blog = blogs.find((b) => b.slug === slug);
@@ -28,8 +38,12 @@ function BlogPost() {
             </Link>
           </div>
           <div className="flex justify-end flex-1">
-            <a href={BOOK_URL} target="_blank" rel="noopener noreferrer"
-              className="bg-[#A10D02] hover:bg-[#8D0B01] text-white px-6 py-2.5 rounded-full font-medium transition-transform duration-150 transform hover:translate-y-1 inline-block whitespace-nowrap">
+            
+              href={BOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#A10D02] hover:bg-[#8D0B01] text-white px-6 py-2.5 rounded-full font-medium transition-transform duration-150 transform hover:translate-y-1 inline-block whitespace-nowrap"
+            >
               Book a Call
             </a>
           </div>
@@ -44,8 +58,9 @@ function BlogPost() {
         <p className="text-gray-500 text-sm mb-10">
           {blog.date} · {blog.readTime}
         </p>
-        <div className="space-y-6 text-gray-800 leading-relaxed text-base whitespace-pre-line">
-          {blog.content}
+
+        <div className="space-y-4">
+          {renderContent(blog.content)}
         </div>
 
         <div className="mt-16 bg-gray-50 border border-[#A10D02]/20 rounded-2xl p-8 text-center">
@@ -53,8 +68,12 @@ function BlogPost() {
           <p className="text-gray-600 text-sm mb-6">
             Book a free 15-minute call — no pressure, just real answers.
           </p>
-          <a href={BOOK_URL} target="_blank" rel="noopener noreferrer"
-            className="bg-[#A10D02] text-white px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2 hover:bg-[#8D0B01] transition-colors">
+          
+            href={BOOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#A10D02] text-white px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2 hover:bg-[#8D0B01] transition-colors"
+          >
             <Calendar className="w-4 h-4" />
             Book Your Free Call
           </a>
