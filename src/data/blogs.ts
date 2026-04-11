@@ -5,7 +5,7 @@ export const blogs = [
     excerpt: "Simple strategies to get top dollar quickly in today's Texas market.",
     date: "April 1, 2026",
     readTime: "4 min read",
-    content: "Selling your home fast in today's Texas market comes down to three things: pricing it right, presenting it well, and marketing it aggressively".
+    content: `Selling your home fast in today's Texas market comes down to three things: pricing it right, presenting it well, and marketing it aggressively.
 
 **1. Price It Right From Day One**
 Overpriced homes sit. The longer a home sits, the more buyers assume something is wrong. Work with your agent to price based on recent comps — not what you hope to get.
@@ -22,7 +22,7 @@ Listing Thursday or Friday means your home shows up fresh right before the weeke
 **5. Be Flexible With Showings**
 The more accessible your home is, the more buyers can see it. Restrict showings and you restrict offers.
 
-Want a free strategy session? Book a call and let's talk about your specific situation.",
+Want a free strategy session? Book a call and let's talk about your specific situation.`,
   },
   {
     slug: "first-time-buyer-guide",
@@ -30,7 +30,7 @@ Want a free strategy session? Book a call and let's talk about your specific sit
     excerpt: "Everything you need to know before buying your first home.",
     date: "March 15, 2026",
     readTime: "6 min read",
-    content: "Buying your first home is one of the biggest financial decisions you'll ever make. Here's what you need to know before you start".
+    content: `Buying your first home is one of the biggest financial decisions you'll ever make. Here's what you need to know before you start.
 
 **Step 1: Know Your Budget**
 Before falling in love with a home, get pre-approved. A lender will look at your income, debt, and credit score to tell you what you can realistically afford. Don't skip this step.
@@ -50,11 +50,11 @@ From accepted offer to closing takes roughly 30–45 days. You'll have inspectio
 Have questions about buying your first home in Texas? Book a free call — no pressure, just answers.`,
   },
   {
-    slug: "market-update-2026".
+    slug: "market-update-2026",
     title: "Texas Real Estate Market Update 2026",
-    excerpt: 'Whats happening right now and where prices are heading.",
-    date: 'April 7, 2026',
-    readTime: '5 min read',
+    excerpt: "What's happening right now and where prices are heading.",
+    date: "April 7, 2026",
+    readTime: "5 min read",
     content: `The Texas real estate market in 2026 continues to show resilience, though it looks different than the frenzy of 2021–2022.
 
 **Inventory Is Up**
