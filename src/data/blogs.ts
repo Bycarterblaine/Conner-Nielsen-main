@@ -2,7 +2,7 @@ export const blogs = [
   {
     slug: 'how-to-sell-fast',
     title: 'How to Sell Your Home Fast in 2026',
-    excerpt: 'Simple strategies to get top dollar quickly in today's Texas market.',
+    excerpt: "Simple strategies to get top dollar quickly in today's Texas market.",
     date: 'April 1, 2026',
     readTime: '4 min read',
     content: `Selling your home fast in today's Texas market comes down to three things: pricing it right, presenting it well, and marketing it aggressively.
