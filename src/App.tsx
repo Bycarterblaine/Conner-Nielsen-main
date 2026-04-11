@@ -107,7 +107,7 @@ const BOOK_URL = 'https://myworkspacebfb9d.myclickfunnels.com/schedule/ic-with-c
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-function HomePage() {
+function App() {
   const [dialingPhone, setDialingPhone]   = useState<string | null>(null);
   const [activeVideo, setActiveVideo]     = useState<string | null>(null);
   const [videoLoaded, setVideoLoaded]     = useState(false);
@@ -122,7 +122,6 @@ function HomePage() {
   const featuredVideos = videos.filter((v) => v.featured && v.id !== 1);
   const marqueeVideos  = videos.filter((v) => !v.featured);
 
-  // Scroll-triggered animations
   useEffect(() => {
     const opts = { root: null, rootMargin: '0px', threshold: 0.1 };
 
@@ -144,8 +143,6 @@ function HomePage() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // ─── Render ───────────────────────────────────────────────────────────────
-
   return (
     <div className="min-h-screen bg-white text-gray-900">
 
@@ -155,20 +152,14 @@ function HomePage() {
           <div className="flex items-center flex-1">
             <span className="font-semibold text-lg">Conner Nielsen</span>
           </div>
-
           <div className="hidden md:flex items-center justify-center gap-8 text-sm flex-1">
             <button onClick={() => scrollToSection('videos')}  className="text-gray-600 hover:text-gray-900 transition-colors">Videos</button>
             <button onClick={() => scrollToSection('reviews')} className="text-gray-600 hover:text-gray-900 transition-colors">Reviews</button>
             <button onClick={() => scrollToSection('proof')}   className="text-gray-600 hover:text-gray-900 transition-colors">Proof</button>
           </div>
-
           <div className="flex justify-end flex-1">
-            <a
-              href={BOOK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#A10D02] hover:bg-[#8D0B01] text-white px-6 py-2.5 rounded-full font-medium transition-transform duration-150 transform hover:translate-y-1 inline-block whitespace-nowrap"
-            >
+            <a href={BOOK_URL} target="_blank" rel="noopener noreferrer"
+              className="bg-[#A10D02] hover:bg-[#8D0B01] text-white px-6 py-2.5 rounded-full font-medium transition-transform duration-150 transform hover:translate-y-1 inline-block whitespace-nowrap">
               Book a Call
             </a>
           </div>
@@ -178,32 +169,21 @@ function HomePage() {
       {/* ── Hero ── */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
         <div className="absolute inset-0 bg-black">
-          <video
-            ref={videoRef}
-            autoPlay muted loop playsInline
-            onLoadedData={() => setVideoLoaded(true)}
+          <video ref={videoRef} autoPlay muted loop playsInline onLoadedData={() => setVideoLoaded(true)}
             className="absolute inset-0 w-full h-full object-cover"
-            style={{ position: 'absolute', top: '50%', left: '50%', minWidth: '100%', minHeight: '100%', width: 'auto', height: 'auto', transform: 'translate(-50%, -50%)' }}
-          >
+            style={{ position: 'absolute', top: '50%', left: '50%', minWidth: '100%', minHeight: '100%', width: 'auto', height: 'auto', transform: 'translate(-50%, -50%)' }}>
             <source src="/background-video.mp4" type="video/mp4" />
           </video>
           {!videoLoaded && <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black" />}
           <div className="absolute inset-0 bg-black/40" />
         </div>
-
         <div className="relative z-10 max-w-4xl mx-auto px-4 py-20 text-center text-white">
-          <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold leading-snug mb-4">
-            North Texas Realtor
-          </h1>
+          <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold leading-snug mb-4">North Texas Realtor</h1>
           <p className="text-sm md:text-base text-white max-w-lg mx-auto mb-4">
             Get more value than anywhere else in just 10 minutes and you could win $1,000 or $2,000 every month!
           </p>
-          <a
-            href={BOOK_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#A10D02] text-white px-10 py-4 rounded-full font-semibold text-lg transition-transform hover:scale-105 inline-flex items-center gap-2"
-          >
+          <a href={BOOK_URL} target="_blank" rel="noopener noreferrer"
+            className="bg-[#A10D02] text-white px-10 py-4 rounded-full font-semibold text-lg transition-transform hover:scale-105 inline-flex items-center gap-2">
             <Calendar className="w-5 h-5" />
             Book Your Free Call
           </a>
@@ -213,19 +193,13 @@ function HomePage() {
       {/* ── Videos ── */}
       <section id="videos" className="py-24 md:py-32 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-
           <div className="text-center mb-8">
             <h3 className="text-2xl md:text-3xl font-bold">How I Give You More Value</h3>
           </div>
-
-          {/* Hero video */}
           <div className="max-w-5xl mx-auto mb-10">
             {videos.filter((v) => v.id === 1).map((video) => (
-              <div
-                key={video.id}
-                onClick={() => setActiveVideo(video.embedId)}
-                className="group relative overflow-hidden cursor-pointer bg-gray-900 shadow-2xl rounded-[32px] mx-auto max-w-3xl aspect-[16/9]"
-              >
+              <div key={video.id} onClick={() => setActiveVideo(video.embedId)}
+                className="group relative overflow-hidden cursor-pointer bg-gray-900 shadow-2xl rounded-[32px] mx-auto max-w-3xl aspect-[16/9]">
                 <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform">
@@ -239,31 +213,15 @@ function HomePage() {
               </div>
             ))}
           </div>
-
-          {/* Metrics — 3-col on all screen sizes */}
           <div className="grid grid-cols-3 gap-4 max-w-sm mx-auto mb-12 text-center">
-            <div>
-              <p className="text-3xl font-bold text-[#8D0B01]">$250M+</p>
-              <p className="text-xs md:text-sm font-bold">In Sales</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-[#8D0B01]">500+</p>
-              <p className="text-xs md:text-sm font-bold">Homes Sold</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-[#8D0B01]">10+</p>
-              <p className="text-xs md:text-sm font-bold">Years</p>
-            </div>
+            <div><p className="text-3xl font-bold text-[#8D0B01]">$250M+</p><p className="text-xs md:text-sm font-bold">In Sales</p></div>
+            <div><p className="text-3xl font-bold text-[#8D0B01]">500+</p><p className="text-xs md:text-sm font-bold">Homes Sold</p></div>
+            <div><p className="text-3xl font-bold text-[#8D0B01]">10+</p><p className="text-xs md:text-sm font-bold">Years</p></div>
           </div>
-
-          {/* Featured video grid */}
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredVideos.map((video) => (
-              <div
-                key={video.id}
-                onClick={() => setActiveVideo(video.embedId)}
-                className="group relative overflow-hidden cursor-pointer shadow-lg rounded-3xl aspect-video"
-              >
+              <div key={video.id} onClick={() => setActiveVideo(video.embedId)}
+                className="group relative overflow-hidden cursor-pointer shadow-lg rounded-3xl aspect-video">
                 <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform">
@@ -277,28 +235,18 @@ function HomePage() {
               </div>
             ))}
           </div>
-
-          {/* Marquee */}
           <div className="pt-7">
             <style>{`
-              @keyframes marquee {
-                0%   { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-              }
+              @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
               .animate-marquee { animation: marquee 60s linear infinite; }
             `}</style>
-
             <div className="relative group overflow-hidden">
               <div className="pointer-events-none absolute left-0 top-0 h-full w-24 z-20 bg-gradient-to-r from-white via-white/80 to-transparent" />
               <div className="pointer-events-none absolute right-0 top-0 h-full w-24 z-20 bg-gradient-to-l from-white via-white/80 to-transparent" />
-
               <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused] py-4">
                 {[...marqueeVideos, ...marqueeVideos].map((video, i) => (
-                  <div
-                    key={`${video.id}-${i}`}
-                    onClick={() => setActiveVideo(video.embedId)}
-                    className="flex flex-col items-center gap-3 px-4 flex-shrink-0 cursor-pointer"
-                  >
+                  <div key={`${video.id}-${i}`} onClick={() => setActiveVideo(video.embedId)}
+                    className="flex flex-col items-center gap-3 px-4 flex-shrink-0 cursor-pointer">
                     <div className="w-40 h-40 group/item relative overflow-hidden bg-gray-900 rounded-3xl shadow-md transition-shadow hover:shadow-xl">
                       <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover opacity-80 group-hover/item:opacity-60 transition-opacity" />
                       <div className="absolute inset-0 flex items-center justify-center">
@@ -313,14 +261,12 @@ function HomePage() {
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
       {/* ── Reviews ── */}
       <section id="reviews" className="py-24 md:py-32 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-
           <div className="text-center mb-14">
             <h2 className="text-3xl font-bold mb-4">Verified Reviews</h2>
             <div className="flex items-center justify-center mt-4">
@@ -330,19 +276,13 @@ function HomePage() {
               </div>
             </div>
           </div>
-
-          {/* Google review cards */}
           <div ref={reviewsRef} className="grid md:grid-cols-3 gap-8 mb-12">
             {googleReviews.map((review, index) => (
-              <div
-                key={review.id}
+              <div key={review.id}
                 className={`bg-gray-50 rounded-xl p-6 transition-all duration-1000 ease-[cubic-bezier(0.2,1,0.3,1)] ${reviewsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-                style={{ transitionDelay: `${index * 100}ms` }}
-              >
+                style={{ transitionDelay: `${index * 100}ms` }}>
                 <div className="flex items-center gap-1 mb-3">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-amber-400" fill="currentColor" />
-                  ))}
+                  {[...Array(review.rating)].map((_, i) => <Star key={i} className="w-4 h-4 text-amber-400" fill="currentColor" />)}
                 </div>
                 <Quote className="w-6 h-6 text-[#A10D02] mb-2" />
                 <p className="text-gray-700 text-sm leading-relaxed mb-4">"{review.text}"</p>
@@ -350,25 +290,19 @@ function HomePage() {
               </div>
             ))}
           </div>
-
-          {/* Mini testimonial cards */}
           <div ref={moreStoriesRef} className="max-w-6xl mx-auto mb-10">
             <p className="text-sm text-gray-700 mb-4 text-center uppercase tracking-widest">Even more reviews</p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
               {testimonials.slice(0, 15).map((t, index) => (
-                <div
-                  key={t.id}
+                <div key={t.id}
                   className={`bg-gray-50 rounded-lg p-4 text-center transition-all duration-700 ease-out ${storiesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                  style={{ transitionDelay: `${(index % 5) * 100 + Math.floor(index / 5) * 100}ms` }}
-                >
+                  style={{ transitionDelay: `${(index % 5) * 100 + Math.floor(index / 5) * 100}ms` }}>
                   <p className="font-semibold text-sm mb-2">{t.name}</p>
                   <p className="text-gray-600 text-xs line-clamp-2 italic">"{t.text}"</p>
                 </div>
               ))}
             </div>
           </div>
-
-          {/* ── Proof ── */}
           <div id="proof" className="pt-10">
             <div className="text-center mb-6">
               <h2 className="text-3xl font-bold mb-2 text-gray-900">Verify Directly</h2>
@@ -376,83 +310,52 @@ function HomePage() {
                 Call any of my past clients. Ask about their experience, the results they got, and why they'd recommend me.
               </p>
             </div>
-
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-8 gap-6">
               {clientPhones.map((client) => (
-                <a
-                  key={client.name}
-                  href={`tel:${client.phone.replace(/-/g, '')}`}
-                  onClick={() => setDialingPhone(client.phone)}
-                  className="group bg-gray-50 border-[#A10D02]/20 rounded-lg p-4 text-center flex flex-col justify-between shadow-sm hover:shadow-md hover:border-[#A10D02]/50 transition-all cursor-pointer"
-                >
+                <a key={client.name} href={`tel:${client.phone.replace(/-/g, '')}`} onClick={() => setDialingPhone(client.phone)}
+                  className="group bg-gray-50 border-[#A10D02]/20 rounded-lg p-4 text-center flex flex-col justify-between shadow-sm hover:shadow-md hover:border-[#A10D02]/50 transition-all cursor-pointer">
                   <div>
                     <p className="font-semibold text-sm mb-2 text-gray-900">{client.name}</p>
                     <p className="text-gray-600 text-xs mb-3 font-mono">{client.phone}</p>
                   </div>
                   <div className="mt-auto text-[10px] uppercase tracking-wider font-bold text-[#A10D02] flex items-center justify-center gap-1">
-                    {dialingPhone === client.phone ? (
-                      <><PhoneOutgoing className="w-3 h-3" /><span>Dialing...</span></>
-                    ) : (
-                      <><Phone className="w-3 h-3 group-hover:scale-110 transition-transform" /><span>Call now</span></>
-                    )}
+                    {dialingPhone === client.phone
+                      ? <><PhoneOutgoing className="w-3 h-3" /><span>Dialing...</span></>
+                      : <><Phone className="w-3 h-3 group-hover:scale-110 transition-transform" /><span>Call now</span></>}
                   </div>
                 </a>
               ))}
             </div>
           </div>
-
         </div>
       </section>
 
-      {/* ── Blog Section ── */}
-<section className="py-24 md:py-32 px-6 bg-white">
-  <div className="max-w-6xl mx-auto">
-
-    <div className="text-center mb-14">
-      <h2 className="text-3xl font-bold mb-4">Placeholder Title</h2>
-    </div>
-
-    <div className="grid md:grid-cols-3 gap-8">
-      {blogs.map((post) => (
-        <a
-          key={post.slug}
-          href={`/blog/${post.slug}`}
-          className="bg-gray-50 rounded-xl p-6 transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
-        >
-          <div className="mb-3">
-            <p className="font-semibold text-lg text-gray-900">
-              {post.title}
-            </p>
+      {/* ── Blog ── */}
+      <section className="py-24 md:py-32 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl font-bold mb-4">Real Estate Tips & Insights</h2>
           </div>
-
-          <p className="text-gray-600 text-sm leading-relaxed mb-4">
-            {post.excerpt}
-          </p>
-
-          <span className="text-[#A10D02] text-sm font-semibold">
-            Read More →
-          </span>
-        </a>
-      ))}
-    </div>
-
-  </div>
-</section>
-
+          <div className="grid md:grid-cols-3 gap-8">
+            {blogs.map((post) => (
+              <a key={post.slug} href={`/blog/${post.slug}`}
+                className="bg-gray-50 rounded-xl p-6 transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
+                <p className="font-semibold text-lg text-gray-900 mb-3">{post.title}</p>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">{post.excerpt}</p>
+                <span className="text-[#A10D02] text-sm font-semibold">Read More →</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── Final CTA ── */}
       <section className="py-24 md:py-32 px-6 bg-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4 text-gray-900">Book a free 15-minute call</h2>
-          <p className="text-[#011936] font-semibold text-base mb-4">
-            No pressure, no obligation. Just a conversation about your goals.
-          </p>
-          <a
-            href={BOOK_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#A10D02] text-white px-10 py-4 rounded-full font-semibold text-lg transition-transform hover:scale-105 inline-flex items-center gap-2"
-          >
+          <p className="text-[#011936] font-semibold text-base mb-4">No pressure, no obligation. Just a conversation about your goals.</p>
+          <a href={BOOK_URL} target="_blank" rel="noopener noreferrer"
+            className="bg-[#A10D02] text-white px-10 py-4 rounded-full font-semibold text-lg transition-transform hover:scale-105 inline-flex items-center gap-2">
             <Calendar className="w-5 h-5" />
             Book Your Free Call
           </a>
@@ -462,39 +365,23 @@ function HomePage() {
       {/* ── Instagram ── */}
       <section id="instagram" className="py-24 overflow-hidden">
         <style>{`
-          @keyframes instagram-slide {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
-          }
-          .marquee-track {
-            display: flex;
-            width: max-content;
-            animation: instagram-slide 40s linear infinite;
-          }
+          @keyframes instagram-slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+          .marquee-track { display: flex; width: max-content; animation: instagram-slide 40s linear infinite; }
           .marquee-track:hover { animation-play-state: paused; }
           .marquee-mask {
             mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
           }
         `}</style>
-
         <div className="max-w-6xl mx-auto text-center mb-12 px-6">
           <h3 className="text-2xl md:text-3xl font-bold mb-2">Catch up with me on Instagram</h3>
-          <p className="text-gray-600 max-w-xl text-xs font-semibold mx-auto">
-            Latest updates, get to know me & my family, and see more client wins
-          </p>
+          <p className="text-gray-600 max-w-xl text-xs font-semibold mx-auto">Latest updates, get to know me & my family, and see more client wins</p>
         </div>
-
         <div className="relative w-[80%] mx-auto overflow-hidden marquee-mask">
           <div className="marquee-track flex gap-4 py-4">
             {[...instagramPosts, ...instagramPosts].map((post, index) => (
-              <a
-                key={`${post.id}-${index}`}
-                href={post.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-shrink-0 w-48 h-48 md:w-64 md:h-64 rounded-xl overflow-hidden border border-gray-200 hover:scale-105 transition-transform"
-              >
+              <a key={`${post.id}-${index}`} href={post.link} target="_blank" rel="noopener noreferrer"
+                className="flex-shrink-0 w-48 h-48 md:w-64 md:h-64 rounded-xl overflow-hidden border border-gray-200 hover:scale-105 transition-transform">
                 <img src={post.image} alt={`Instagram post ${post.id}`} className="w-full h-full object-cover" />
               </a>
             ))}
@@ -507,66 +394,40 @@ function HomePage() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <span className="font-bold text-xl">Conner Nielsen</span>
-
             <div className="text-center md:text-right">
               <p className="text-white">DFW Real Estate Expert</p>
-
               <div className="flex items-center justify-center md:justify-end gap-4 my-3">
-                <a href="https://www.facebook.com/Close.Real.Estate.DFW" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-white/60 hover:text-[#1877F2] transition-colors">
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a href="https://www.instagram.com/connernielsendfwrealtor/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-white/60 hover:text-[#E1306C] transition-colors">
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a href="https://www.realtor.com/realestateagents/5cdc61989faa730012edb36e" target="_blank" rel="noopener noreferrer" aria-label="Realtor.com" className="text-white/60 hover:text-[#D92228] transition-colors">
-                  <RealtorIcon />
-                </a>
+                <a href="https://www.facebook.com/Close.Real.Estate.DFW" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-white/60 hover:text-[#1877F2] transition-colors"><Facebook className="w-5 h-5" /></a>
+                <a href="https://www.instagram.com/connernielsendfwrealtor/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-white/60 hover:text-[#E1306C] transition-colors"><Instagram className="w-5 h-5" /></a>
+                <a href="https://www.realtor.com/realestateagents/5cdc61989faa730012edb36e" target="_blank" rel="noopener noreferrer" aria-label="Realtor.com" className="text-white/60 hover:text-[#D92228] transition-colors"><RealtorIcon /></a>
               </div>
-
-              <a href="tel:8069288884" className="text-[#A10D02] font-mono hover:underline">
-                <span>806-928-8884</span>
-              </a>
+              <a href="tel:8069288884" className="text-[#A10D02] font-mono hover:underline"><span>806-928-8884</span></a>
             </div>
           </div>
-
-          <div className="mt-8 pt-8 border-t border-white/10 text-center text-white/40 text-sm">
-            2026 © Conner Nielsen. All rights reserved.
-          </div>
+          <div className="mt-8 pt-8 border-t border-white/10 text-center text-white/40 text-sm">2026 © Conner Nielsen. All rights reserved.</div>
         </div>
       </footer>
 
       {/* ── Video Modal ── */}
       <Dialog open={activeVideo !== null} onOpenChange={() => setActiveVideo(null)}>
-        <DialogContent
-          className="!bg-black !p-0 !border-0 !rounded-none !max-w-none !w-screen !h-screen !top-0 !left-0 !translate-x-0 !translate-y-0 fixed"
-          showCloseButton={false}
-        >
+        <DialogContent className="!bg-black !p-0 !border-0 !rounded-none !max-w-none !w-screen !h-screen !top-0 !left-0 !translate-x-0 !translate-y-0 fixed" showCloseButton={false}>
           <div className="bg-black h-full flex flex-col">
             <div className="flex items-center justify-between px-4 py-2 border-b border-white/10 flex-shrink-0">
               <div className="flex-1">
                 <p className="text-white text-sm font-semibold">{selectedVideo?.title ?? 'Watch Video'}</p>
                 <p className="text-white/50 text-xs">{selectedVideo ? `${selectedVideo.duration} • YouTube` : 'Video player'}</p>
               </div>
-              <button onClick={() => setActiveVideo(null)} className="text-white/70 hover:text-white flex-shrink-0 ml-2">
-                <X className="w-5 h-5" />
-              </button>
+              <button onClick={() => setActiveVideo(null)} className="text-white/70 hover:text-white flex-shrink-0 ml-2"><X className="w-5 h-5" /></button>
             </div>
-
             <div className="flex-1 bg-black overflow-hidden">
               {activeVideo ? (
-                <iframe
-                  className="w-full h-full"
+                <iframe className="w-full h-full"
                   src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1&controls=1`}
                   title={selectedVideo?.title ?? 'Video player'}
-                  allow="autoplay; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                />
+                  allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen />
               ) : (
                 <div className="flex items-center justify-center h-full">
-                  <div className="text-center text-white/60">
-                    <Play className="w-16 h-16 mx-auto mb-4" />
-                    <p>Loading video...</p>
-                  </div>
+                  <div className="text-center text-white/60"><Play className="w-16 h-16 mx-auto mb-4" /><p>Loading video...</p></div>
                 </div>
               )}
             </div>
@@ -575,17 +436,6 @@ function HomePage() {
       </Dialog>
 
     </div>
-  );
-}
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/blog/:slug" element={<BlogPost />} />
-        <Route path="/*" element={<HomePage />} />
-      </Routes>
-    </BrowserRouter>
   );
 }
 
